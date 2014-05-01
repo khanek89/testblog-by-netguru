@@ -1,0 +1,13 @@
+- comments.each do |comment|
+  .media
+    = link_to image_tag("http://www.iwise.com/authorIcons/author_no_icon.png", class: "media-object"),
+      comment.user,
+      class: "pull-left"
+    .media-body
+      %h4.media-heading
+        = comment.user.name
+        %small
+          at
+          = comment.created_at.strftime("%d/%m/%Y : %H:%M")
+
+      = comment.body

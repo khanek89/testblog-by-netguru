@@ -27,6 +27,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new(post_id: post)
+    @comments = Comment.where(post_id: post)#, include: :comments
   end
 
   def mark_archived
@@ -36,6 +38,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    post.user_id = current_user.id
     if post.save
       redirect_to action: :index
     else

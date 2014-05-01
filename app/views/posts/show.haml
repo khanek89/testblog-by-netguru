@@ -2,11 +2,22 @@
   %h2
     = post.title
     %small
-      = post.created_at
+      = post.created_at.strftime("%d/%m/%Y : %H:%M")
   = link_to "edit", edit_post_path(post), class: 'post__button--edit'
 
   .post__body
     = post.body
-  .post__tags-list.tagsinput
-    - post.tags_array.each do |tag|
-      = content_tag :span, tag, class: 'tag'
+  -if post.tags_array.length > 0
+    .post__tags-list.tagsinput
+      - post.tags_array.each do |tag|
+        = content_tag :span, tag, class: 'tag'
+
+.clearfix
+%hr
+= simple_form_for @comment, :url => post_comments_path(post) do |f|
+  = f.input :body, as: :text, input_html: { cols: 50, rows: 3 }
+  = f.button :submit
+%hr
+= render partial: "comments", locals: { comments: @comments }
+
+

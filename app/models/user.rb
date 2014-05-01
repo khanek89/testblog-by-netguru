@@ -12,6 +12,7 @@ class User
   validates_presence_of :encrypted_password
 
   has_many :posts
+  has_many :comments
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -36,6 +37,10 @@ class User
 
   def owner? post
     posts.include? post
+  end
+
+  def owner? comment
+    comments.include? comment
   end
 
   def to_s
