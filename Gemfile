@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 
 gem 'rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -17,6 +18,8 @@ gem 'flatui-rails', github: 'pkurek/flatui-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
+
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'html2haml'
