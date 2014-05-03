@@ -27,4 +27,6 @@ Easyblog::Application.configure do
   config.assets.debug = true
 
   config.eager_load = false
+
+  config.consider_all_requests_local = true
 end

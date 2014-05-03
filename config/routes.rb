@@ -2,10 +2,16 @@ Easyblog::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
-  resources :posts, shallow: true do
-    resources :comments
+  resources :posts do
     member do
       post :mark_archived
+    end
+    resources :comments, shallow: true do
+      member do
+        post :vote_up
+        post :vote_down
+        post :mark_as_not_abusive
+      end
     end
   end
 end

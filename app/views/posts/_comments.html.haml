@@ -1,5 +1,9 @@
 - comments.each do |comment|
-  .media
+  .media{:class => ("well" if comment.abusive)}
+    - if current_user != comment.user and not comment.votedby? current_user
+      .btn-group.pull-left
+        = button_to "Vote up!", vote_up_comment_path(id: comment.id, comment: comment), method: :post, class: "post__button--edit"
+        = button_to "Vote down", vote_down_comment_path(id: comment.id, comment: comment), method: :post, class: "post__button--edit"
     = link_to image_tag("http://www.iwise.com/authorIcons/author_no_icon.png", class: "media-object"),
       comment.user,
       class: "pull-left"
@@ -11,3 +15,12 @@
           = comment.created_at.strftime("%d/%m/%Y : %H:%M")
 
       = comment.body
+    .clearfix
+      %small
+        Votes up:
+        = comment.votes_up
+      %small
+        Votes down:
+        = comment.votes_down
+    %hr
+

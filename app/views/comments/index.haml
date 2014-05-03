@@ -2,8 +2,6 @@
   comments
   %small
     = "(#{comments.count})"
-  = link_to "add new", new_post_comment_path, class: 'post__button--add pull-right'
-
 %ol
   - comments.each do |comment|
     %li.post--short-size
