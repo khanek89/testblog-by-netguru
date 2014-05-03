@@ -5,11 +5,13 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: easyblog_development
+      database: testblog
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - localhost:27017
+        - oceanic.mongohq.com:10032
+      username: admin
+      password: ald532392
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
